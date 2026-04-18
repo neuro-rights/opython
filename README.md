@@ -17,6 +17,7 @@ OpenHoldem opython user dll add-on
 ## To Run
 
 1. Move user.dll, python.ohf and bot.py to Openholdem directory
-2. Load python.ohf in oh
-3. Run :)
+2. clone PokerAxiom Repo at https://github.com/neuro-rights/PokerAxiom.git to OpenHolodem directory
+3. Load python.ohf in oh
+4. Run :)
 
