@@ -1,13 +1,5 @@
 ##f$allin##
-
-
-
-##f$betpot_1_1##
-
-
-
-##f$betpot_1_2##
-
+0
 
 
 ##f$betsize##
@@ -15,6 +7,7 @@
 // OpenHoldem will auto-adapt the betsize to the casinos input-requirements.
 // Please define your tablemaps "betsizeinterpretationmethod"
 // to configure this feature.
+WHEN [me_re_dec > f$call_constant] RETURN me_re_dec FORCE
 
 
 ##f$raise##
@@ -22,7 +15,7 @@
 
 
 ##f$call##
-
+WHEN [me_re_dec == f$call_constant] RETURN true FORCE
 
 
 ##f$sitin##
@@ -75,33 +68,54 @@ isfinalanswer ? me_st_dec_f$dlldecision : 0
 
 
 ##f$debug##
+= isfinalanswer
+= isnl
+= isfl
 = userchair
-= AmountToCall
-
-
-##list_random_crap##
-KK JJ 66 33
-A8s A3s KTs K7s K4s Q8s Q7s Q3s J8s J5s T7s 96s 94s 93s 85s 82s 63s 53s
-A6o KTo K8o K5o QJo Q8o Q3o JTo J5o T6o 92o 87o 85o 84o 62o 43o
+= dealposition
+= smallblindchair
+= bigblindchair
+= utgchair
+= ep1chair
+= ep2chair
+= ep3chair
+= mp1chair
+= mp2chair
+= mp3chair
+= cutoffchair
+= dealerchair
 
 
 ##f$preflop##
-me_re_dec
+
 
 
 ##f$flop##
-me_re_dec
+
 
 
 ##f$turn##
-me_re_dec
+
 
 
 ##f$river##
-me_re_dec
+
+
+
+##f$call_constant##
+0.001
 
 
 ##f$dlldecision##
 dll$decision
+
+
+##f$willplay##
+// handsplayed<10 ? 72 : 180*0.2
+77
+
+
+##f$wontplay##
+f$willplay * 1.4
 
 
