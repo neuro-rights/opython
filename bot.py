@@ -244,11 +244,12 @@ class Main:
         players_active_bits = {}
         for i in range(10):
             p_bet = self.oh_double["currentbet" + str(i)]
-            players_bets.update({i: p_bet})
+            players_bets.update({i+1: p_bet})
             p_stack = self.oh_double["balance" + str(i)]
-            players_stacks.update({i: p_stack})
-            players_active_bits.update({i: bool(int(self.oh_int["playersplayingbits"]) & (1 << i))})
+            players_stacks.update({i+1: p_stack})
+            players_active_bits.update({i+1: bool(int(self.oh_int["playersplayingbits"]) & (1 << i))})
             
+        """
         print("Players Stacks\n")
         print(players_stacks)
         print("Plzyers Bets\n")
@@ -256,7 +257,12 @@ class Main:
         print("Players Active\n")
         print(players_active_bits)
         print("\n")
-            
+        """
+        
+        print()
+        print(str(self.oh_int["userchair"]) + "\n")
+        print(str(self.oh_int["dealerchair"]) + "\n")
+        
         # Scenario: Hero has flush draw
         state = GameState(
             hero_cards=self.player_cards,
@@ -268,7 +274,7 @@ class Main:
             sb=self.oh_double["sblind"],
             bb=self.oh_double["bblind"],
             position=(0 if self.oh_int["dealposition"] == self.oh_int["nplayersdealt"] else self.oh_int["dealposition"]),
-            dealer_seat=int(self.oh_int["dealerchair"]),
+            dealer_seat=int(self.oh_int["dealerchair"]) + 1,
             hero_seat=int(self.oh_int["userchair"]),
             active_seats=players_active_bits
         )
