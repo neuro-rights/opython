@@ -249,7 +249,8 @@ class Main:
             players_stacks.update({i+1: p_stack})
             players_active_bits.update({i+1: bool(int(self.oh_int["playersplayingbits"]) & (1 << i))})
             
-        """
+
+        print("\n")
         print("Players Stacks\n")
         print(players_stacks)
         print("Plzyers Bets\n")
@@ -257,7 +258,6 @@ class Main:
         print("Players Active\n")
         print(players_active_bits)
         print("\n")
-        """
         
         print()
         print(str(self.oh_int["userchair"]) + "\n")
@@ -275,7 +275,7 @@ class Main:
             bb=self.oh_double["bblind"],
             position=(0 if self.oh_int["dealposition"] == self.oh_int["nplayersdealt"] else self.oh_int["dealposition"]),
             dealer_seat=int(self.oh_int["dealerchair"]) + 1,
-            hero_seat=int(self.oh_int["userchair"]),
+            hero_seat=int(self.oh_int["userchair"]) + 1,
             active_seats=players_active_bits
         )
         
